@@ -102,8 +102,9 @@ void I2C_IMU::Init() {
 }
 
 void I2C_IMU::Update() {
+#ifdef BMI2_DELAY
     aux_bmi2_dev.delay_us(50000, aux_bmi2_dev.intf_ptr);
-
+#endif
     /* To get the data ready interrupt status of accel, gyro and aux */
     bmi2_get_int_status(&bmi_bmm_init_status, &aux_bmi2_dev);
 
