@@ -12,13 +12,13 @@ M5CoreS3::~M5CoreS3() {
 
 void M5CoreS3::begin(bool LCDEnable, bool USBSerialEnable, bool I2CEnable) {
     if (USBSerialEnable) {
-        USBSerial.begin(115200);
-        USBSerial.flush();
+        Serial.begin(115200);
+        Serial.flush();
         delay(1500);
-        USBSerial.println("M5CoreS3 initializing...OK");
+        Serial.println("M5CoreS3 initializing...OK");
     }
 
-    USBSerial.printf("APX initial:%d\n", Axp.begin(&Wire1));
+    Serial.printf("APX initial:%d\n", Axp.begin(&Wire1));
 
     if (LCDEnable) {
         Axp.coreS3_init();
